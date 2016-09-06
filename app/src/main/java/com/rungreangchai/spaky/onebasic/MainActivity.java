@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setUserProfile(UserProfile userProfiles) {
-        txtShow.setText("first name : " + userProfiles.getFirstName() + "\nLast name : " + userProfiles.getLastName());
+        txtShow.setText("first nam : " + userProfiles.getFirstName() + "\nLast name : " + userProfiles.getLastName());
     }
 
     public void callService() {
