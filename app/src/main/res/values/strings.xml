@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OneBasic</string>
+
+    <string name="btn_response">response</string>
+</resources>
