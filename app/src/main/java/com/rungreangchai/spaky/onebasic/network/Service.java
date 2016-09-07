@@ -8,9 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class Service {
     private static final String URL_LOGIN_USER = "http://192.168.1.18/test/user_profile.php";
@@ -20,13 +17,12 @@ public class Service {
     private static final String TODO_UPDATE = "UPDATE";
     private static final String TODO_DELETE = "DELECT";
 
-    private static RequestTask task;
+    private static RequestTask task = new RequestTask();
 
     public static void getUserLogin(UserResultLoginCallback callback) {
         if (callback != null) {
             UserProfile userProfiles = null;
             String strJson = null;
-            task = new RequestTask();
             JSONObject json = new JSONObject();
             try {
                 json.put("todo", TODO_SELECT);
@@ -50,6 +46,7 @@ public class Service {
         String response = null;
         if (callback != null) {
             try {
+                json.put("todo", TODO_INSERT);
                 json.put("user", user);
                 json.put("pass", pass);
                 json.put("fname", fName);
@@ -60,13 +57,12 @@ public class Service {
 
             try {
                 response = task.execute(URL_LOGIN_USER, json.toString()).get();
+                JSONObject obj = new JSONObject(response);
+                callback.onUserRegisSuccess(obj.getBoolean("success"));
             } catch (Exception e) {
-                Log.d("regisUser ", "Exception" + e.toString());
+                Log.d("regisUser ", "Exception " + e.toString());
             }
         }
-
-        Log.d("response", " data " + response);
-
     }
 
     public interface UserRegisterCallback {

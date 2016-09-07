@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="sss"
-        android:textSize="30sp" />
+        android:textSize="@dimen/default_text_size_normal" />
 
 
     <Button

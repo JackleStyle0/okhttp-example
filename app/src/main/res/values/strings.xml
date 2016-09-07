@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">OneBasic</string>
+    <string name="register">REGISTER</string>
 
     <string name="btn_response">response</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="firstname">firstname</string>
+    <string name="lastname">Lastname</string>
 </resources>
