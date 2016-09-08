@@ -4,6 +4,7 @@
 
     <string name="btn_response">response</string>
     <string name="btn_upload">UPLOAD</string>
+    <string name="btn_test">TEST</string>
 
     <string name="username">username</string>
     <string name="password">password</string>

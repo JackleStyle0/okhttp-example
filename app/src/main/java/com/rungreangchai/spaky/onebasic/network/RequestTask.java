@@ -16,7 +16,7 @@ import okhttp3.Response;
 public class RequestTask extends AsyncTask<String, Void, String> {
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private String doPostRequest(String url, String json) {
+    private String doPostRequest(String url, String json, String multipart) {
         Response response = null;
         RequestBody body = RequestBody.create(JSON, json);
         OkHttpClient client = new OkHttpClient();
@@ -36,11 +36,15 @@ public class RequestTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... values) {
-        return doPostRequest(values[0], values[1]);
+        return doPostRequest(values[0], values[1], values[2]);
     }
 
     @Override
     protected void onPostExecute(final String result) {
         super.onPostExecute(result);
     }
+
+//    public RequestBody mutipartBody() {
+//
+//    }
 }

@@ -73,4 +73,8 @@ public class Service {
         void onUserRegisSuccess(Boolean success);
     }
 
+    public static void productUpload(String proNumber, String proNname, String proPirce, String imgStr){
+
+    }
+
 }
