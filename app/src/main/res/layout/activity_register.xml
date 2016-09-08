@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:id="@+id/root_view"
     tools:context="com.rungreangchai.spaky.onebasic.RegisterActivity">
 
 
@@ -16,28 +16,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/username"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColorHint="@color/text_pink" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColorHint="@color/text_pink" />
 
     <EditText
         android:id="@+id/firstname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/firstname"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColorHint="@color/text_pink" />
 
     <EditText
         android:id="@+id/lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/lastname"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColorHint="@color/text_pink" />
 
     <Button
         android:id="@+id/btn_register"
@@ -47,6 +51,6 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:background="@drawable/seletor_bg_button"
         android:text="@string/register"
-        android:textColor="@color/white" />
+        android:textColor="@color/text_white" />
 
 </LinearLayout>

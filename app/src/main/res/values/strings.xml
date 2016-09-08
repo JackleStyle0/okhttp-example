@@ -3,8 +3,15 @@
     <string name="register">REGISTER</string>
 
     <string name="btn_response">response</string>
+    <string name="btn_upload">UPLOAD</string>
+
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="firstname">firstname</string>
     <string name="lastname">Lastname</string>
+
+    <string name="pro_name">product name</string>
+    <string name="pro_number">product number</string>
+    <string name="pro_price">product price</string>
+
 </resources>

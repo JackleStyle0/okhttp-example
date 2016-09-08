@@ -41,6 +41,10 @@ public class Service {
         }
     }
 
+    public interface UserResultLoginCallback {
+        void onUserLoginSuccess(UserProfile userProfileList);
+    }
+
     public static void regisUser(String user, String pass, String fName, String lName, UserRegisterCallback callback) {
         JSONObject json = new JSONObject();
         String response = null;
@@ -67,10 +71,6 @@ public class Service {
 
     public interface UserRegisterCallback {
         void onUserRegisSuccess(Boolean success);
-    }
-
-    public interface UserResultLoginCallback {
-        void onUserLoginSuccess(UserProfile userProfileList);
     }
 
 }
