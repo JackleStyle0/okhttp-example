@@ -8,10 +8,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
 
 public class Service {
     private static final String URL_LOGIN_USER = "http://192.168.1.18/test/user_profile.php";
     private static final String URL_PRODUCR = "http://192.168.1.18/test/user_profile.php";
+    private static final MediaType MEDIA_TYPE_JPG = MediaType.parse("image/jpg");
+    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
     private static final String TODO_SELECT = "SELECT";
     private static final String TODO_INSERT = "INSERT";
     private static final String TODO_UPDATE = "UPDATE";
@@ -60,7 +65,9 @@ public class Service {
             }
 
             try {
-                response = task.execute(URL_LOGIN_USER, json.toString()).get();
+                RequestBody body = RequestBuilder.requestPost(json.toString());
+//                response = task.execute(URL_LOGIN_USER, body.toString(), "false").get();
+//                Log.d("regisUser ", "Exception " + body);
                 JSONObject obj = new JSONObject(response);
                 callback.onUserRegisSuccess(obj.getBoolean("success"));
             } catch (Exception e) {
@@ -73,7 +80,7 @@ public class Service {
         void onUserRegisSuccess(Boolean success);
     }
 
-    public static void productUpload(String proNumber, String proNname, String proPirce, String imgStr){
+    public static void productUpload(String proNumber, String proNname, String proPirce, String imgStr) {
 
     }
 

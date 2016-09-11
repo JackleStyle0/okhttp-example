@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -111,7 +110,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("os", "is" + imgFile.toString());
 
         return os.toString();
     }

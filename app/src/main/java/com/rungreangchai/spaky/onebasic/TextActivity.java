@@ -94,7 +94,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                 .addFormDataPart("name", "pic1")
                 .addFormDataPart("format", "json")
                 .addFormDataPart("filename", "pic.jpg")
-                .addFormDataPart("file", "...", RequestBody.create(MEDIA_TYPE, bitmapToFile()))
+                .addFormDataPart("file", "test", RequestBody.create(MEDIA_TYPE, bitmapToFile()))
                 .build();
         Request request = new Request.Builder()
                 .url(urls)
