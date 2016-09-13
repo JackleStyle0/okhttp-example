@@ -118,7 +118,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onInsertProductSuccess(Boolean success) {
         this.success = success;
-        if (success.equals("true")) {
+        if (success) {
             Snackbar.make(viewGroup, "Upload Success", Snackbar.LENGTH_SHORT).show();
         } else {
             Snackbar.make(viewGroup, "Upload Fail", Snackbar.LENGTH_SHORT).show();

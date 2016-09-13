@@ -82,9 +82,8 @@ public class Service {
             try {
                 response = task.execute(request).get();
 
-//                JSONObject obj = new JSONObject(response);
-                Log.d("productUpload", "response" + response.toString());
-//                callback.onInsertProductSuccess(obj.getBoolean("success"));
+                JSONObject obj = new JSONObject(response);
+                callback.onInsertProductSuccess(obj.getBoolean("success"));
             } catch (Exception e) {
                 Log.d("productUpload", "Exception e" + e.toString());
             }
