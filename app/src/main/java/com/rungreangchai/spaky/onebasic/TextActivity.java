@@ -34,6 +34,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton btnImgTest;
     Bitmap upload;
 
+    //test upload
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
