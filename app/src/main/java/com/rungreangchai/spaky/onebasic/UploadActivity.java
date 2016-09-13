@@ -2,6 +2,8 @@ package com.rungreangchai.spaky.onebasic;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+
+import com.rungreangchai.spaky.onebasic.network.Service;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,17 +24,16 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 
-public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
+public class UploadActivity extends AppCompatActivity implements View.OnClickListener, Service.InsertProductCallback {
     private final int RESULT_LOAD_IMAGE = 1;
-    private final String TYPE_PNG = ".png";
-    private final String TYPE_JPEG = ".jpg";
 
+    private LinearLayout viewGroup;
     private EditText edName, edNumber, edPrice;
+    private boolean success;
     private ImageButton imgProduct;
     private Button btnUpload;
     private Bitmap upload;
     private Uri filePath;
-    private OutputStream file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         edPrice = (EditText) findViewById(R.id.ed_price);
         btnUpload = (Button) findViewById(R.id.btn_upload);
         imgProduct = (ImageButton) findViewById(R.id.btn_select_image);
+        viewGroup = (LinearLayout) findViewById(R.id.view_group);
 
     }
 
@@ -67,7 +72,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 String name = edName.getText().toString();
                 String price = edPrice.getText().toString();
                 String number = edNumber.getText().toString();
-                bitmaptoFile(name, TYPE_PNG);
+
+                Service.productUpload(number, name, price, bitmapToFile(), this);
                 break;
             default:
                 break;
@@ -92,25 +98,30 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    public String bitmaptoFile(String name, String fileType) {
-        File fileDir = getApplicationContext().getFilesDir();
-        File imgFile = new File(fileDir, name + "" + fileType);
+    public File bitmapToFile() {
+        Bitmap bitmap = ((BitmapDrawable) imgProduct.getDrawable()).getBitmap();
+        File file = new File(getCacheDir(), "image.png");
 
-        OutputStream os = null;
         try {
-            os = new FileOutputStream(imgFile);
-            if (fileDir.equals(".png")) {
-                upload.compress(Bitmap.CompressFormat.PNG, 100, os);
-            } else {
-                upload.compress(Bitmap.CompressFormat.JPEG, 100, os);
-            }
-
-            os.flush();
-            os.close();
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return os.toString();
+
+        return file;
+    }
+
+    @Override
+    public void onInsertProductSuccess(Boolean success) {
+        this.success = success;
+        if (success.equals("true")) {
+            Snackbar.make(viewGroup, "Upload Success", Snackbar.LENGTH_SHORT).show();
+        } else {
+            Snackbar.make(viewGroup, "Upload Fail", Snackbar.LENGTH_SHORT).show();
+        }
     }
 }

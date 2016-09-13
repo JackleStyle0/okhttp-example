@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void callService() {
-        Service.getUserLogin(this);
+//        Service.getUserLogin(this);
     }
 
 
