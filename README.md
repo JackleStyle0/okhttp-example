@@ -42,7 +42,7 @@
 ```
 # PHP upload file
 
-...
+```php
 <?php
   include 'conn.php';
 
