@@ -40,3 +40,40 @@
 ?>
 
 ```
+# PHP upload file
+
+```php
+<?php
+  include 'conn.php';
+
+   $todo = $_POST['todo'];
+
+   if(isset($_POST['todo']) && $todo == "INSERT"){
+     $name = $_POST['name'];
+     $number = $_POST['number'];
+     $price = $_POST['price'];
+
+     $pathImage = "image/";
+     //file
+     $file = $_FILES['file']['name'];
+     // get type file
+    $type = end(explode('/', $_FILES['file']['type']));
+
+     $pathImage = $pathImage. basename($file.".".$type);
+     $sql_insert = "INSERT INTO productTable(proId, proName, proPrice, proImg) VALUES('$number', '$name', '$price', '$pathImage')";
+     $result = $conn->query($sql_insert);
+
+     $response = array();
+     if($result){
+      $response['success'] = 'true';
+      move_uploaded_file($_FILES['file']['tmp_name'], $pathImage);
+     }else{
+       $response['success'] = 'false';
+     }
+
+     echo json_encode($response);
+     mysqli_close($conn);
+   }
+ ?>
+ ...
+
